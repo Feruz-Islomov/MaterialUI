@@ -10,12 +10,12 @@ import SendIcon from "@mui/icons-material/Send";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
-import React, { useState } from "react";
+import React from "react";
 
 const ButtonC = () => {
-  const [formats, setFormats] = useState([]);
-  const handleFormatChange = () => {
-    // setFormats("bold");
+  const [alignment, setAlignment] = React.useState("left");
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
   };
   return (
     <Stack spacing={4}>
@@ -68,9 +68,9 @@ const ButtonC = () => {
         <Button
           variant="outlined"
           endIcon={<SendIcon />}
-          onClick={() => alert("dialog")}
+          onClick={() => alert("error msg")}
         >
-          Send
+          Send error
         </Button>
         <IconButton aria-label="send" color="info" size="small">
           <SendIcon />
@@ -105,8 +105,9 @@ const ButtonC = () => {
       <Stack direction="row">
         <ToggleButtonGroup
           aria-label="text formatting"
-          value={formats}
-          onChange={handleFormatChange}
+          value={alignment}
+          onChange={handleAlignment}
+          // exclusive
         >
           <ToggleButton value="bold" aria-label="bold">
             <FormatBoldIcon />
